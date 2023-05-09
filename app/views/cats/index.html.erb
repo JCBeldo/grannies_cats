@@ -1,0 +1,7 @@
+<h1><center>Cute and Cuddly Cats</h1>
+
+<ul><% @cats.each do |cat| %>
+  <li><%= cat.name %>
+  <li><%= cat.spayed_neutered %>
+  <li><%= cat.lives %>
+<% end %>
