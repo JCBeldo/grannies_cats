@@ -7,11 +7,13 @@ RSpec.describe 'Grannies index page', type: :feature do
 
   describe 'displays the attributes of each granny' do
     it 'should display the name of each granny' do
-    visit "/grannies"
-      save_and_open_page
-    expect(page).to have_content("Gretta")
-    expect(page).to have_content(granny_2.name)
-    expect(page).to have_content(granny_3.name)
+      visit "/grannies"
+        
+      expect(page).to have_content("Gretta")
+      expect(page).to have_content(granny_2.name)
+      expect(page).to have_content(granny_3.name)
     end
   end
 end
+
+#save_and_open_page
