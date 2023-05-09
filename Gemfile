@@ -56,7 +56,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'orderly'
   gem 'launchy'
-  # gem 'http-net'
+  # gem 'net-http'
   gem 'capybara'
   gem 'simplecov'
 end
