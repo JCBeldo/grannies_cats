@@ -1,4 +1,4 @@
-class GranniesController <ApplicationController
+class GranniesController < ApplicationController
   def index
     @grannies = Granny.all
   end
