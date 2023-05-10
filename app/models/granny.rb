@@ -4,4 +4,8 @@ class Granny < ApplicationRecord
   def self.ordered_grannies
     order(created_at: :desc)
   end
+
+  def cat_count
+    self.cats.count
+  end
 end
