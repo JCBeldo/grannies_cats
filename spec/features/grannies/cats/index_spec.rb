@@ -13,7 +13,7 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
   describe 'Displays the cats that belong to each granny' do
     it 'should display each cats attributes that belong to granny by ID' do
       visit "/grannies/#{granny_1.id}/cats"
-      save_and_open_page
+      
       expect(page).to have_content(cat_1.name)
       expect(page).to have_content(cat_2.name)
       expect(page).to have_content(cat_3.name)
