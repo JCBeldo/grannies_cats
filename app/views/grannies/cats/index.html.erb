@@ -1,0 +1,9 @@
+<h1><center><%= "#{@granny.name}'s Cats" %></h1>
+
+<ul><% @granny.cats.each do |cat| %>
+  <b style="font-size:25px;">Name:</b> <b style="font-size:20px;"><%= cat.name %>
+  <br><b style="font-size:18px;">Spayed or Neutered?:</b> <%= cat.spayed_neutered %>
+  <br><b style="font-size:18px;">Number of lives out of nine:</b> <%= cat.lives %>
+  <br>
+  <br>
+<% end %></ul>

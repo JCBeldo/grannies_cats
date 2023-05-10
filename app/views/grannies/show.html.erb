@@ -1,0 +1,7 @@
+<h1 style="color:purple;"><center>This is Granny <%= "#{@granny.name}" %></h1>
+<%= link_to "My Cats", "/grannies/#{@granny.id}/cats", style: "float:right; font-size:20px;"%>
+
+<b><p style ="font-size:20px;">Age:</b> <%= @granny.age %> years young
+<br>
+<b><p style="font-size:20px;">Has Treats?:</b> <%= @granny.has_treats %></p>
+<b><p style="font-size:20px;">Number of Cats:</b> <%= @granny.cat_count %></p>

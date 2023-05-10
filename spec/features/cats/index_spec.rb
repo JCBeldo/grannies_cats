@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Granny, type: :model do
+RSpec.describe 'Cats index page', type: :feature do
   let!(:granny_1) { Granny.create!(name: "Gretta", has_treats: true, age: 77) }
   let!(:granny_2) { Granny.create!(name: "Ethel", has_treats: true, age: 88) }
   let!(:granny_3) { Granny.create!(name: "Blanche", has_treats: false, age: 66) }
@@ -9,23 +9,25 @@ RSpec.describe Granny, type: :model do
   let!(:cat_3) { granny_1.cats.create!(name: "Sillyfluff", spayed_neutered: true, lives: 7) }
   let!(:cat_4) { granny_2.cats.create!(name: "Mr. Wiskers", spayed_neutered: false, lives: 6) }
   let!(:cat_5) { granny_3.cats.create!(name: "DingPu", spayed_neutered: true, lives: 9) }
-  
-  describe 'relationships' do
-    it { should have_many(:cats) }
-  end
-  
-  describe 'class_methods' do
-    it '::ordered_grannies' do
 
-    expect(Granny.ordered_grannies).to eq([granny_3, granny_2, granny_1])
+  describe 'displays the attributes of each cat' do
+    it 'should display the name and number of lives of each cat' do
+      visit "/cats"
+        
+      expect(page).to have_content("Snuffles")
+      expect(page).to have_content(cat_2.name)
+      expect(page).to have_content(cat_3.name)
+      expect(page).to have_content(cat_4.name)
+      expect(page).to have_content(cat_5.name)
+      expect(page).to have_content(cat_2.lives)
+      expect(page).to have_content(cat_4.lives)
     end
-  end
 
-  describe 'instance_methods' do
-    it '#cat_count' do
-
-    expect(granny_1.cat_count).to eq(3)
-    expect(granny_2.cat_count).to eq(1)
+    it 'should display if the cat is spayed or neutered' do
+      visit "/cats"
+      
+      expect(page).to have_content(cat_4.spayed_neutered)
+      expect(page).to have_content(cat_5.spayed_neutered)
     end
   end
 end
