@@ -56,5 +56,16 @@ RSpec.describe 'Grannies show page', type: :feature do
 
       expect(current_path).to eq("/grannies")
     end
+
+    it 'should display a link to the grannies/cats index' do
+      visit "/grannies/#{granny_3.id}"
+      save_and_open_page
+      expect(page).to have_link("My Cats")
+      
+      click_link("My Cats")
+      
+      expect(current_path).to eq("/grannies/#{granny_3.id}/cats")
+      save_and_open_page
+    end
   end
 end
