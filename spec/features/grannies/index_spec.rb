@@ -31,6 +31,18 @@ RSpec.describe 'Grannies index page', type: :feature do
       expect(page).to have_content(granny_1.created_at)
     end
   end
+
+  describe 'displays a link to create a new granny and redirects back' do
+    it 'should display a link to create a new granny and links to a new page' do
+      visit "/grannies"
+
+      expect(page).to have_link("New Granny")
+
+      click_link("New Granny")
+
+      expect(current_path).to eq("/grannies/new")
+    end
+  end
 end
 
 #save_and_open_page
