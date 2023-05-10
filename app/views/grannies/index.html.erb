@@ -1,5 +1,5 @@
 <h2 style= "background-color:black; color:darkgrey;"><center>All the Grannies</h2>
 <h1>Names:</h1>
-<ul style = "font-size:20px;"><% @grannies.each do |granny| %>
-  <li><%= granny.name %>
+<ul style = "font-size:20px;"><% @grannies.ordered_grannies.each do |granny| %>
+  <li><%= granny.name %></li><b style="float:right;"> Created At: <%= granny.created_at %></b>
 <% end %>

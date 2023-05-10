@@ -14,6 +14,23 @@ RSpec.describe 'Grannies index page', type: :feature do
       expect(page).to have_content(granny_3.name)
     end
   end
+
+  describe 'displays records displayed in order by most recent' do
+    it 'should display the grannies in descending order from recent to oldest' do
+      visit "/grannies"
+
+      expect("Blanche").to appear_before("Ethel")
+      expect("Ethel").to appear_before("Gretta")
+    end
+
+    it 'shows the timestamp next to each granny record' do
+      visit "/grannies"
+      
+      expect(page).to have_content(granny_3.created_at)
+      expect(page).to have_content(granny_2.created_at)
+      expect(page).to have_content(granny_1.created_at)
+    end
+  end
 end
 
 #save_and_open_page
