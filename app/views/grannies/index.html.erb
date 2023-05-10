@@ -1,0 +1,6 @@
+<h2 style= "background-color:black; color:darkgrey;"><center>All the Grannies</h2>
+<img src="https://comicvine.gamespot.com/a/uploads/original/4/47703/3168378-6144935228-39823.jpg" alt="granny_cats" width="250" height="150">
+<h1>Names:</h1>
+<ul style = "font-size:20px;"><% @grannies.ordered_grannies.each do |granny| %>
+  <li><%= granny.name %></li><b style="float:right;"> Created At: <%= granny.created_at %></b>
+<% end %>
