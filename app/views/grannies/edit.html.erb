@@ -1,0 +1,12 @@
+<h1><center>Update This Granny</h1>
+
+<%= form_with model: @granny, url: "/grannies/#{@granny.id}", method: :patch, local: true do |form| %>
+ 
+  <%= form.label :has_treats %>
+  <%= form.text_field :has_treats %>
+  <%= form.label :age %>
+  <%= form.text_field :age %>
+  <%= form.hidden_field :granny_id, value: @granny.id %>
+
+  <%= form.submit "Update" %>
+<% end %>

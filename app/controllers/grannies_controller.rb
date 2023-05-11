@@ -16,8 +16,22 @@ class GranniesController < ApplicationController
     redirect_to "/grannies"
   end
 
+  def edit
+    @granny = Granny.find(params[:id])
+  end
+
+  def update
+    granny = Granny.find(params[:id])
+    granny.update(update_granny_params)
+
+    redirect_to "/grannies/#{granny.id}"
+  end
+
   private
   def granny_params
     params.permit(:name, :has_treats, :age)
+  end
+  def update_granny_params
+    params.require(:granny).permit(:name, :has_treats, :age)
   end
 end
