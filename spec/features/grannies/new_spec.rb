@@ -12,7 +12,7 @@ RSpec.describe 'Grannies new page', type: :feature do
       expect(page).to have_button("Create Granny")
 
       fill_in("Name", with: "Edna")
-      fill_in("Has treats", with: "true")
+      fill_in("Has treats", with: true)
       fill_in("Age", with: 69)
       click_button("Create Granny")
 
