@@ -22,4 +22,16 @@ RSpec.describe 'Cats show page', type: :feature do
       expect(page).to_not have_content(cat_3.name)
     end
   end
+
+  describe 'displays a link to update this cat and redirects to an edit page' do
+    it 'should display a link to update the attributes of this cat' do
+      visit "/cats/#{cat_1.id}"
+
+      expect(page).to have_link("Update Cat")
+
+      click_link("Update Cat")
+
+      expect(current_path).to eq("/cats/#{cat_1.id}/edit")
+    end
+  end
 end
