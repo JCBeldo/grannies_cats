@@ -68,4 +68,23 @@ RSpec.describe 'Grannies show page', type: :feature do
       
     end
   end
+
+  describe 'displays a link to update a granny and redirects to an edit page' do
+    it 'should display a link to update the granny' do
+      visit "/grannies/#{granny_1.id}"
+
+      expect(page).to have_link("Update Granny")
+
+      click_link("Update Granny")
+
+      expect(current_path).to eq("/grannies/#{granny_1.id}/edit")
+    end
+  end
 end
+
+# I see a form to edit the parent's attributes:
+# When I fill out the form with updated information
+# And I click the button to submit the form
+# Then a PATCH request is sent to '/parents/:id',
+# the parent's info is updated,
+# and I am redirected to the Parent's Show page where I see the parent's updated info
