@@ -1,6 +1,6 @@
 <h1><center>Update This Granny</h1>
 
-<%= form_with model: @granny, url: "/grannies/#{@granny.id}", method: :patch, local: true do |form| %>
+<%= form_with url: "/grannies/#{@granny.id}", method: :patch, local: true do |form| %>
  
   <%= form.label :has_treats %>
   <%= form.text_field :has_treats %>
