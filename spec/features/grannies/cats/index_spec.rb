@@ -17,8 +17,22 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(page).to have_content(cat_1.name)
       expect(page).to have_content(cat_2.name)
       expect(page).to have_content(cat_3.name)
+      expect(page).to_not have_content(cat_4.name)
+      expect(page).to_not have_content(cat_5.name)
       expect(page).to have_content(cat_3.lives)
       expect(page).to have_content(cat_2.spayed_neutered)
+    end
+  end
+
+  describe 'displays a link to adopt a new cat' do
+    it 'should display a link to go to a new page to add a cat to this granny' do
+      visit "/grannies/#{granny_2.id}/cats"
+
+      expect(page).to have_link("Add New Cat")
+
+      click_link("Add New Cat")
+
+      expect(current_path).to eq("/grannies/#{granny_2.id}/cats/new")
     end
   end
 end

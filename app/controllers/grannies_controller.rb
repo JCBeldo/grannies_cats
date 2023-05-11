@@ -22,8 +22,8 @@ class GranniesController < ApplicationController
 
   def update
     granny = Granny.find(params[:id])
-    granny.update(update_granny_params)
-
+    granny.update(granny_params)
+    
     redirect_to "/grannies/#{granny.id}"
   end
 
@@ -31,7 +31,7 @@ class GranniesController < ApplicationController
   def granny_params
     params.permit(:name, :has_treats, :age)
   end
-  def update_granny_params
-    params.require(:granny).permit(:name, :has_treats, :age)
-  end
+  # def update_granny_params
+  #   params.require(:granny).permit(:name, :has_treats, :age)
+  # end
 end

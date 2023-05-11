@@ -1,5 +1,5 @@
-<h1><center><%= "#{@granny.name}'s Cats" %></h1>
-
+<h1 style="background-color:purple; color:white;"><center><%= "#{@granny.name}'s Cats" %></h1>
+  <%= link_to "Add New Cat", "/grannies/#{@granny.id}/cats/new", style: "float:right; font-size:20px;"%>
 <ul><% @granny.cats.each do |cat| %>
   <b style="font-size:25px;">Name:</b> <b style="font-size:20px;"><%= cat.name %>
   <br><b style="font-size:18px;">Spayed or Neutered?:</b> <%= cat.spayed_neutered %>

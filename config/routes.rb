@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post "/grannies", to: "grannies#create"
   
   get "/grannies/:id/cats", to: "grannies/cats#index"
+  get "/grannies/:id/cats/new", to: "grannies/cats#new"
+  post "/grannies/:id/cats", to: "grannies/cats#create"
   
   get "/cats", to: "cats#index"
   get "/cats/:id", to: "cats#show"
