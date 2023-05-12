@@ -1,6 +1,6 @@
 <h1><center>Cute and Cuddly Cats</h1>
 <img src="https://www.ctvnews.ca/polopoly_fs/1.4601149.1568920554!/httpImage/image.jpg_gen/derivatives/landscape_1020/image.jpg" alt="granny_cats" width="250" height="150">
-<ul><% @cats.each do |cat| %>
+<ul><% @cats.already_spayed.each do |cat| %>
   <li><b style="font-size:20px;">Name:</b> <b style="color:Purple;"><%= cat.name %></b></li>
   <li><b style="font-size:20px;">Spayed or Neutered:</b> <b style="color:red;"><%= cat.spayed_neutered %></b>
   <li><b style="font-size:20px;">How many lives out of 9:</b> <%= cat.lives %>
