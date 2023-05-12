@@ -31,7 +31,4 @@ class GranniesController < ApplicationController
   def granny_params
     params.permit(:name, :has_treats, :age)
   end
-  # def update_granny_params
-  #   params.require(:granny).permit(:name, :has_treats, :age)
-  # end
 end

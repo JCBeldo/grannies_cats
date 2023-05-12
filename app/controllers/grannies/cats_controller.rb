@@ -20,10 +20,4 @@ class Grannies::CatsController < ApplicationController
   def cat_params
     params.permit(:name, :spayed_neutered, :lives)
   end
-  
-  # def sort_aplha
-  #   granny = Granny.find(params[:id])
-  #   cat = granny.cats.find(params[:id])
-  #   cat.order(:name)
-  # end
 end
