@@ -17,17 +17,40 @@ RSpec.describe 'Cats index page', type: :feature do
       expect(page).to have_content("Snuffles")
       expect(page).to have_content(cat_2.name)
       expect(page).to have_content(cat_3.name)
-      expect(page).to have_content(cat_4.name)
       expect(page).to have_content(cat_5.name)
+      expect(page).to_not have_content(cat_4.name)
       expect(page).to have_content(cat_2.lives)
-      expect(page).to have_content(cat_4.lives)
+      expect(page).to_not have_content(cat_4.lives)
     end
 
     it 'should display if the cat is spayed or neutered' do
       visit "/cats"
       
-      expect(page).to have_content(cat_4.spayed_neutered)
+      expect(page).to have_content(cat_3.spayed_neutered)
       expect(page).to have_content(cat_5.spayed_neutered)
+      expect(page).to_not have_content(cat_4.spayed_neutered)
+    end
+
+    it 'should only show cats that are spayed or neutered' do
+      visit "/cats"
+
+      expect(page).to have_content(cat_1.spayed_neutered)
+      expect(page).to have_content(cat_2.spayed_neutered)
+      expect(page).to have_content(cat_3.spayed_neutered)
+      expect(page).to have_content(cat_5.spayed_neutered)
+      expect(page).to_not have_content(cat_4.spayed_neutered)
+    end
+  end
+
+  describe 'displays a link to edit a cat' do
+    it "should display a link to edit a cat's attritubtes" do
+      visit "/cats"
+      
+      expect(page).to have_button("Edit #{cat_1.name}")
+
+      click_button("Edit #{cat_1.name}")
+
+      expect(current_path).to eq("/cats/#{cat_1.id}/edit")
     end
   end
 end

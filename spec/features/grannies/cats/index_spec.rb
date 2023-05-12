@@ -17,8 +17,50 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(page).to have_content(cat_1.name)
       expect(page).to have_content(cat_2.name)
       expect(page).to have_content(cat_3.name)
+      expect(page).to_not have_content(cat_4.name)
+      expect(page).to_not have_content(cat_5.name)
       expect(page).to have_content(cat_3.lives)
       expect(page).to have_content(cat_2.spayed_neutered)
+    end
+  end
+
+  describe 'displays a link to adopt a new cat' do
+    it 'should display a link to go to a new page to add a cat to this granny' do
+      visit "/grannies/#{granny_2.id}/cats"
+
+      expect(page).to have_link("Add New Cat")
+
+      click_link("Add New Cat")
+
+      expect(current_path).to eq("/grannies/#{granny_2.id}/cats/new")
+    end
+  end
+
+  describe 'displays a link to sort cats alphabetically' do
+    it 'should display a link called sort alphabetically and when pressed redirects back sorted' do
+      visit "/grannies/#{granny_1.id}/cats"
+      
+      expect(cat_1.name).to appear_before(cat_2.name)
+      expect(cat_2.name).to appear_before(cat_3.name)
+      expect(page).to have_link("Sort Alphabetically")
+
+      click_link("Sort Alphabetically")
+      
+      expect(current_path).to eq("/grannies/#{granny_1.id}/cats")
+      expect(cat_2.name).to appear_before(cat_3.name)
+      expect(cat_3.name).to appear_before(cat_1.name)
+    end
+  end
+  
+  describe 'displays a link to edit a cat' do
+    it "should display a link to edit a cat's attritubtes" do
+      visit "/grannies/#{granny_1.id}/cats"
+      
+      expect(page).to have_button("Edit #{cat_1.name}")
+
+      click_button("Edit #{cat_1.name}")
+
+      expect(current_path).to eq("/cats/#{cat_1.id}/edit")
     end
   end
 end

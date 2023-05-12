@@ -59,13 +59,25 @@ RSpec.describe 'Grannies show page', type: :feature do
 
     it 'should display a link to the grannies/cats index' do
       visit "/grannies/#{granny_3.id}"
-      save_and_open_page
+      
       expect(page).to have_link("My Cats")
       
       click_link("My Cats")
       
       expect(current_path).to eq("/grannies/#{granny_3.id}/cats")
-      save_and_open_page
+      
+    end
+  end
+
+  describe 'displays a link to update a granny and redirects to an edit page' do
+    it 'should display a link to update the granny' do
+      visit "/grannies/#{granny_1.id}"
+
+      expect(page).to have_link("Update Granny")
+
+      click_link("Update Granny")
+
+      expect(current_path).to eq("/grannies/#{granny_1.id}/edit")
     end
   end
 end
