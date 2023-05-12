@@ -28,7 +28,7 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(current_path).to eq("/cats/#{cat_1.id}")
       expect(page).to have_content(8)
       expect(page).to have_content(true)
-      save_and_open_page 
+       
     end
   end
 end

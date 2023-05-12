@@ -35,6 +35,22 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(current_path).to eq("/grannies/#{granny_2.id}/cats/new")
     end
   end
+
+  describe 'displays a link to sort cats alphabetically' do
+    it 'should display a link called sort alphabetically and when pressed redirects back sorted' do
+      visit "/grannies/#{granny_1.id}/cats"
+      
+      expect(cat_1.name).to appear_before(cat_2.name)
+      expect(cat_2.name).to appear_before(cat_3.name)
+      expect(page).to have_link("Sort Alphabetically")
+
+      click_link("Sort Alphabetically")
+      
+      expect(current_path).to eq("/grannies/#{granny_1.id}/cats")
+      expect(cat_2.name).to appear_before(cat_3.name)
+      expect(cat_3.name).to appear_before(cat_1.name)
+    end
+  end
 end
 
 #save_and_open_page
