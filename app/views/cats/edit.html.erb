@@ -1,0 +1,12 @@
+<h1><center>Update This Cat</h1>
+
+<%= form_with url: "/cats/#{@cat.id}", method: :patch, local: true do |form| %>
+  <%= form.label :spayed_neutered %>
+  <%= form.text_field :spayed_neutered %>
+  <%= form.label :lives %>
+  <%= form.text_field :lives %>
+  <%= form.hidden_field :cat_id, value: @cat.id %>
+  <%= form.hidden_field :name, value: @cat.name %>
+
+  <%= form.submit "Update Cat" %>
+<% end %>
