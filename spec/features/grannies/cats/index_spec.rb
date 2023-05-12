@@ -51,6 +51,18 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(cat_3.name).to appear_before(cat_1.name)
     end
   end
+  
+  describe 'displays a link to edit a cat' do
+    it "should display a link to edit a cat's attritubtes" do
+      visit "/grannies/#{granny_1.id}/cats"
+      
+      expect(page).to have_button("Edit #{cat_1.name}")
+
+      click_button("Edit #{cat_1.name}")
+
+      expect(current_path).to eq("/cats/#{cat_1.id}/edit")
+    end
+  end
 end
 
 #save_and_open_page

@@ -41,4 +41,16 @@ RSpec.describe 'Cats index page', type: :feature do
       expect(page).to_not have_content(cat_4.spayed_neutered)
     end
   end
+
+  describe 'displays a link to edit a cat' do
+    it "should display a link to edit a cat's attritubtes" do
+      visit "/cats"
+      
+      expect(page).to have_button("Edit #{cat_1.name}")
+
+      click_button("Edit #{cat_1.name}")
+
+      expect(current_path).to eq("/cats/#{cat_1.id}/edit")
+    end
+  end
 end
