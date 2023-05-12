@@ -17,15 +17,21 @@ RSpec.describe Granny, type: :model do
   describe 'class_methods' do
     it '::ordered_grannies' do
 
-    expect(Granny.ordered_grannies).to eq([granny_3, granny_2, granny_1])
+      expect(Granny.ordered_grannies).to eq([granny_3, granny_2, granny_1])
     end
   end
 
   describe 'instance_methods' do
     it '#cat_count' do
 
-    expect(granny_1.cat_count).to eq(3)
-    expect(granny_2.cat_count).to eq(1)
+      expect(granny_1.cat_count).to eq(3)
+      expect(granny_2.cat_count).to eq(1)
+    end
+
+    it '#sort_aplha' do
+      granny = Granny.find_by(id: "#{granny_1.id}")
+      expect(granny.sort_aplha("clicked")).to eq([cat_2, cat_3, cat_1])
+      expect(granny.sort_aplha("not")).to eq([cat_1, cat_2, cat_3])
     end
   end
 end
