@@ -1,7 +1,7 @@
 class Grannies::CatsController < ApplicationController
   def index
     @granny = Granny.find(params[:id])
-    @cats = @granny.sort_aplha(params['sort'])
+    @cats = special_cats
   end
   
   def new
@@ -15,9 +15,16 @@ class Grannies::CatsController < ApplicationController
     redirect_to "/grannies/#{granny.id}/cats"
   end
 
-  
   private
   def cat_params
     params.permit(:name, :spayed_neutered, :lives)
+  end
+
+  def special_cats
+    if !params[:lives].nil?
+      @granny.lives_threshold(params[:lives])
+    else
+      @granny.sort_aplha(params['sort'])
+    end
   end
 end

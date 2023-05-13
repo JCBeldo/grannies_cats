@@ -33,5 +33,11 @@ RSpec.describe Granny, type: :model do
       expect(granny.sort_aplha("clicked")).to eq([cat_2, cat_3, cat_1])
       expect(granny.sort_aplha("not")).to eq([cat_1, cat_2, cat_3])
     end
+
+    it '#lives_threshold' do
+      granny = Granny.find_by(id: "#{granny_1.id}")
+      expect(granny.lives_threshold(6)).to eq([cat_1, cat_2, cat_3])
+      expect(granny.lives_threshold(7)).to eq([cat_1, cat_2])
+    end
   end
 end

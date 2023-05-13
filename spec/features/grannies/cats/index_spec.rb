@@ -63,6 +63,26 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(current_path).to eq("/cats/#{cat_1.id}/edit")
     end
   end
+
+  describe 'displays a form to input a value that limits records under a threshold' do
+    it 'should display a form to input a value to return threshold records only' do
+      visit "/grannies/#{granny_1.id}/cats"
+
+      expect(page).to have_content(cat_1.name)
+      expect(page).to have_content(cat_2.name)
+      expect(page).to have_content(cat_3.name)
+      expect(page).to have_button("Only return cats with more than _ lives")
+      
+      fill_in("Lives", with: "7")
+      click_button("Only return cats with more than _ lives")
+
+      expect(current_path).to eq("/grannies/#{granny_1.id}/cats")
+      expect(page).to have_content(cat_1.name)
+      expect(page).to have_content(cat_2.name)
+      expect(page).to_not have_content(cat_3.name)
+    end
+  end
 end
 
 #save_and_open_page
+

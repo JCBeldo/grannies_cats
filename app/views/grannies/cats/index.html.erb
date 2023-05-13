@@ -1,5 +1,13 @@
+<center><img src="https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy84NzU1MjQwL29yaWdpbi5qcGciLCJleHBpcmVzX2F0IjoxNzM0MTQ1MDg4fQ.vtwco0qDEoQt4eoPdcDL2gFJWS3jbkOetD_QHRwIjGg/img.jpg?width=1200&height=800&quality=85&coordinates=0%2C192%2C0%2C192" alt="granny_cats" width="300" height="150"></center>
 <h1 style="background-color:purple; color:white;"><center><%= "#{@granny.name}'s Cats" %></h1>
 <%= link_to "Add New Cat", "/grannies/#{@granny.id}/cats/new", style: "float:right; font-size:20px;"%>
+<%= link_to "Sort Alphabetically", "/grannies/#{@granny.id}/cats?sort=clicked", method: :get, style: "font-size:20px;" %><%= form_with url: "/grannies/#{@granny.id}/cats", method: :get, local: true do |form| %>
+  <center><%= form.label :lives, "Enter Number of Lives" %>
+  <%= form.number_field :lives %>
+  <%= form.submit "Only return cats with more than _ lives" %>
+<% end %></center>
+
+
 <ul><% @cats.each do |cat| %>
   <div><b style="font-size:25px;">Name:</b> 
   <b style="font-size:20px;"><%= cat.name %>
@@ -11,6 +19,3 @@
   <br>
   <br>
 <% end %></ul>
-
-<ul><%= link_to "Sort Alphabetically", "/grannies/#{@granny.id}/cats?sort=clicked", method: :get %>
-

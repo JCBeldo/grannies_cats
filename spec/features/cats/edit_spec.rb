@@ -1,8 +1,3 @@
-# When I click the button to submit the form "Update Child"
-# Then a PATCH request is sent to '/child_table_name/:id',
-# the child's data is updated,
-# and I am redirected to the Child Show page where I see the Child's updated information
-
 require 'rails_helper'
 
 RSpec.describe 'grannies/:id/cats index page', type: :feature do
@@ -22,7 +17,7 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(page).to have_button("Update Cat")
 
       fill_in("Lives", with: 8)
-      fill_in("spayed_neutered", with: true)
+      check
       click_button("Update Cat")
 
       expect(current_path).to eq("/cats/#{cat_1.id}")
