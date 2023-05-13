@@ -1,12 +1,12 @@
-<h1><center>Make a New Granny!</h1>
+<h1 style="background-color:grey;"><center>Make a New Granny!</h1>
 
 <center><%= form_with url: "/grannies", method: :post, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
-  <%= form.label :has_treats %>
-  <%= form.text_field :has_treats %>
   <%= form.label :age %>
   <%= form.text_field :age %>
+  <%= form.label :has_treats, style: "font-size:17px;" %>
+  <%= form.check_box :has_treats %>
 
   <%= form.submit "Create Granny" %>
 <% end %>

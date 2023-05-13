@@ -1,12 +1,12 @@
-<h1><center>Add a New Cat to Your Home!</h1>
+<h1 style="background-color:grey;"><center>Add a New Cat to Your Home!</h1>
 
 <center><%= form_with url: "/grannies/#{@granny.id}/cats", method: :post, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
-  <%= form.label :spayed_neutered %>
-  <%= form.text_field :spayed_neutered %>
   <%= form.label :lives %>
   <%= form.text_field :lives %>
+  <%= form.label :spayed_neutered, "Spayed or Neutered", style: "font-size:17px;" %>
+  <%= form.check_box :spayed_neutered %>
   <%= form.hidden_field :granny_id, value: @granny.id %>
   
   <%= form.submit "Add Cat" %>
