@@ -16,7 +16,7 @@ RSpec.describe 'Grannies show page', type: :feature do
       
       expect(page).to have_button("Update")
 
-      fill_in("Has treats", with: false)
+      have_unchecked_field
       fill_in("Age", with: 78)
       click_button("Update")
 
