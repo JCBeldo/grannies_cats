@@ -4,3 +4,4 @@
 
 <li><b style="font-size:20px;">Number of lives out of 9:</b> <%= @cat.lives %>
 <li><b style="font-size:20px;">Spayed or Neutered?:</b> <%= @cat.spayed_neutered %></li>
+<%= button_to "Delete #{@cat.name}", "/cats/#{@cat.id}", method: :delete %>
