@@ -27,6 +27,15 @@ class GranniesController < ApplicationController
     redirect_to "/grannies/#{granny.id}"
   end
 
+  def destroy
+    granny = Granny.find(params[:id])
+    cats = granny.cats
+    cats.destroy_all
+    granny.destroy
+
+    redirect_to "/grannies"
+  end
+
   private
   def granny_params
     params.permit(:name, :has_treats, :age)

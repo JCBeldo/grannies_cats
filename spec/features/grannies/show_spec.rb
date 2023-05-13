@@ -92,6 +92,8 @@ RSpec.describe 'Grannies show page', type: :feature do
       click_button("Delete #{granny_2.name}")
 
       expect(current_path).to eq("/grannies")
+      expect(page).to_not have_content(granny_2.name)
+
     end
     
     it 'should display a button to delete each particular granny' do

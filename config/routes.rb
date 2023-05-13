@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/grannies/:id/edit", to: "grannies#edit"
   patch "/grannies/:id", to: "grannies#update"
   post "/grannies", to: "grannies#create"
+  delete "/grannies/:id", to: "grannies#destroy"
   
   get "/grannies/:id/cats", to: "grannies/cats#index"
   get "/grannies/:id/cats/new", to: "grannies/cats#new"
