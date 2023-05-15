@@ -62,6 +62,7 @@ RSpec.describe 'Cats index page', type: :feature do
       expect(page).to have_button("Delete #{cat_2.name}")
       expect(page).to have_button("Delete #{cat_3.name}")
       expect(page).to have_button("Delete #{cat_5.name}")
+      expect(page).to_not have_button("Delete #{cat_4.name}")
 
       click_button("Delete #{cat_2.name}")
 
