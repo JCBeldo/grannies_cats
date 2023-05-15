@@ -82,6 +82,23 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(page).to_not have_content(cat_3.name)
     end
   end
+
+  describe 'displays a delete button per cat' do
+    it 'should display a button that deletes a cat record' do
+      visit "/grannies/#{granny_1.id}/cats"
+
+      expect(page).to have_button("Delete #{cat_1.name}")
+      expect(page).to have_button("Delete #{cat_2.name}")
+      expect(page).to have_button("Delete #{cat_3.name}")
+      expect(page).to_not have_button("Delete #{cat_4.name}")
+      expect(page).to_not have_button("Delete #{cat_5.name}")
+
+      click_button("Delete #{cat_1.name}")
+
+      expect(current_path).to eq("/cats")
+      expect(page).to_not have_content(cat_1.name)
+    end
+  end
 end
 
 #save_and_open_page
