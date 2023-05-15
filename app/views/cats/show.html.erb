@@ -1,6 +1,7 @@
-<h1><center>Meet <%= @cat.name %></h1>
-<center><img src="https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_1400/MTk2NzY3MjA5ODc0MjY5ODI2/top-10-cutest-cat-photos-of-all-time.webp" alt="granny_cats" width="250" height="150"></center>
+<center><img src="https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_1400/MTk2NzY3MjA5ODc0MjY5ODI2/top-10-cutest-cat-photos-of-all-time.webp" alt="cuddly_cats" width="300" height="150"></center>
+<h1 style="background-color:lightgray;"><center>Meet <%= @cat.name %></h1>
 <%= link_to "Update Cat", "/cats/#{@cat.id}/edit", style: "font-size:20px; float:right;" %>
 
-<li><b style="font-size:20px;">Number of lives out of 9:</b> <%= @cat.lives %>
-<li><b style="font-size:20px;">Spayed or Neutered?:</b> <%= @cat.spayed_neutered %></li>
+<li><b style="font-size:20px;">Number of lives out of 9:</b> <b style="font-size:21px; color:green;"><%= @cat.lives %></b>
+<li><b style="font-size:20px;">Spayed or Neutered?:</b> <b style="font-size:21px; color:red;"><%= @cat.spayed_neutered %></li>
+<%= button_to "Delete #{@cat.name}", "/cats/#{@cat.id}", method: :delete, style: "margin:20px;" %>

@@ -56,6 +56,19 @@ RSpec.describe 'Grannies index page', type: :feature do
       
     end
   end
+
+  describe 'displays a button to delete a granny record' do
+    it 'should display a button to delete a granny record' do
+      visit "/grannies"
+
+      expect(page).to have_button("Delete #{granny_1.name}")
+
+      click_button("Delete #{granny_1.name}")
+
+      expect(current_path). to eq("/grannies")
+      expect(page).to_not have_button("Delete #{granny_1.name}")
+    end
+  end
 end
 
 #save_and_open_page

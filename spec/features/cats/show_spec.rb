@@ -34,4 +34,19 @@ RSpec.describe 'Cats show page', type: :feature do
       expect(current_path).to eq("/cats/#{cat_1.id}/edit")
     end
   end
+  
+  describe 'displays a delete button to remove a cat record' do
+    it 'should display a button to delete each particular cat' do
+      visit "/cats/#{cat_2.id}"
+      
+      expect(page).to have_button("Delete #{cat_2.name}")
+      expect(page).to_not have_button("Delete #{cat_1.name}")
+
+      click_button("Delete #{cat_2.name}")
+
+      expect(current_path).to eq("/cats")
+      expect(page).to_not have_content(cat_2.name)
+
+    end
+  end
 end

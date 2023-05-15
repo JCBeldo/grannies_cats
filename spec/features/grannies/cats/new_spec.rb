@@ -17,12 +17,14 @@ RSpec.describe 'grannies/:id/cats index page', type: :feature do
       expect(page).to have_button("Add Cat")
 
       fill_in("Name", with: "Spots")
-      fill_in("Spayed neutered", with: true)
-      fill_in("lives", with: 8)
+      check
+      fill_in("Lives", with: 8)
       click_button("Add Cat")
       
       expect(current_path).to eq("/grannies/#{granny_2.id}/cats")
       expect(page).to have_content("Spots")
+      expect(page).to have_content(true)
+      expect(page).to have_content(8)
         
     end
   end

@@ -4,6 +4,7 @@ RSpec.describe 'Grannies show page', type: :feature do
   let!(:granny_1) { Granny.create!(name: "Gretta", has_treats: true, age: 77) }
   let!(:granny_2) { Granny.create!(name: "Ethel", has_treats: true, age: 88) }
   let!(:granny_3) { Granny.create!(name: "Blanche", has_treats: false, age: 66) }
+  # let!(:granny_4) { Granny.create!(name: "Gladys", has_treats: false, age: 66) }
   let!(:cat_1) { granny_1.cats.create!(name: "Snuffles", spayed_neutered: true, lives: 9) }
   let!(:cat_2) { granny_1.cats.create!(name: "Poopykins", spayed_neutered: true, lives: 9) }
   let!(:cat_3) { granny_1.cats.create!(name: "Sillyfluff", spayed_neutered: true, lives: 7) }
@@ -78,6 +79,33 @@ RSpec.describe 'Grannies show page', type: :feature do
       click_link("Update Granny")
 
       expect(current_path).to eq("/grannies/#{granny_1.id}/edit")
+    end
+  end
+
+  describe 'displays a delete button to remove a granny record' do
+    it 'should display a button to delete each particular granny' do
+      visit "/grannies/#{granny_2.id}"
+      
+      expect(page).to have_button("Delete #{granny_2.name}")
+      expect(page).to_not have_button("Delete #{granny_1.name}")
+
+      click_button("Delete #{granny_2.name}")
+
+      expect(current_path).to eq("/grannies")
+      expect(page).to_not have_content(granny_2.name)
+
+    end
+    
+    it 'should display a button to delete each particular granny' do
+      visit "/grannies/#{granny_1.id}"
+      
+      expect(page).to have_button("Delete #{granny_1.name}")
+      expect(page).to_not have_button("Delete #{granny_2.name}")
+
+      click_button("Delete #{granny_1.name}")
+
+      expect(current_path).to eq("/grannies")
+      expect(page).to_not have_content(granny_1.name)
     end
   end
 end

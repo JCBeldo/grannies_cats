@@ -1,9 +1,9 @@
+<center><img src="https://www.ctvnews.ca/polopoly_fs/1.4601149.1568920554!/httpImage/image.jpg_gen/derivatives/landscape_1020/image.jpg" alt="granny_cats" width="300" height="150"></center>
 <h1 style="background-color:darkgrey;"><center>Cute and Cuddly Cats</h1>
-<img src="https://www.ctvnews.ca/polopoly_fs/1.4601149.1568920554!/httpImage/image.jpg_gen/derivatives/landscape_1020/image.jpg" alt="granny_cats" width="250" height="150">
 <ul><% @cats.already_spayed.each do |cat| %>
   
   <li><b style="font-size:20px;">Name:</b> <b style="color:Purple; font-size:20px;"><%= cat.name %> 
-  <%= button_to "Edit #{cat.name}", "/cats/#{cat.id}/edit", method: :get, style: "font-size:20px; padding:15px; float:right; color:green;" %></b></li>
+  <%= button_to "Edit #{cat.name}", "/cats/#{cat.id}/edit", method: :get, style: "font-size:20px; padding:15px; float:right; color:green;" %><%= button_to "Delete #{cat.name}", "/cats/#{cat.id}", method: :delete %></b></li>
   <li><b style="font-size:20px;">Spayed or Neutered:</b> <b style="color:red; font-size:20px;"><%= cat.spayed_neutered %></b>
 
   <li><b style="font-size:20px;">How many lives out of 9:</b> <b style="font-size:20px; background-color:black; color:orange; padding:2px;"><%= cat.lives %></b>

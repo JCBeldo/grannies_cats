@@ -8,3 +8,4 @@
 <br>
 <b><p style="font-size:20px;">Has Treats?:</b> <%= @granny.has_treats %></p>
 <b><p style="font-size:20px;">Number of Cats:</b> <%= @granny.cat_count %></p>
+<%= button_to "Delete #{@granny.name}", "/grannies/#{@granny.id}", method: :delete %>

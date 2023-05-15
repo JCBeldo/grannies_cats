@@ -1,5 +1,5 @@
 class Granny < ApplicationRecord
-  has_many :cats
+  has_many :cats, dependent: :destroy
 
   def self.ordered_grannies
     order(created_at: :desc)
@@ -13,7 +13,11 @@ class Granny < ApplicationRecord
     if sort == "clicked"
       return cats.order(:name)
     else
-      cats
+      self.cats
     end
+  end
+
+  def lives_threshold(cat_lives)
+    cats.where("lives > #{cat_lives}")
   end
 end

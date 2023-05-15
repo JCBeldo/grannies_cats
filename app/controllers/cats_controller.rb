@@ -18,6 +18,13 @@ class CatsController < ApplicationController
     redirect_to "/cats/#{cat.id}"
   end
 
+  def destroy
+    cat = Cat.find(params[:id])
+    cat.destroy
+
+    redirect_to "/cats"
+  end
+
   private
   def cat_params
     params.permit(:spayed_neutered, :lives)
