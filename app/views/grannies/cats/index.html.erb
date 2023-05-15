@@ -11,7 +11,7 @@
 <ul><% @cats.each do |cat| %>
   <div><b style="font-size:25px;">Name:</b> 
   <b style="font-size:20px;"><%= cat.name %>
-  <%= button_to "Edit #{cat.name}", "/cats/#{cat.id}/edit", method: :get, style: "float:left;" %></b></div>
+  <%= button_to "Edit #{cat.name}", "/cats/#{cat.id}/edit", method: :get, style: "float:left;" %><%= button_to "Delete #{cat.name}", "/cats/#{cat.id}", method: :delete, style: "float:left" %></b></div>
   <br>
   <br>
   <div><b style="font-size:18px;">Spayed or Neutered?:</b> <%= cat.spayed_neutered %>

@@ -1,5 +1,5 @@
 class Granny < ApplicationRecord
-  has_many :cats
+  has_many :cats, dependent: :destroy
 
   def self.ordered_grannies
     order(created_at: :desc)

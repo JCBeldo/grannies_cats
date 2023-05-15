@@ -29,8 +29,6 @@ class GranniesController < ApplicationController
 
   def destroy
     granny = Granny.find(params[:id])
-    cats = granny.cats
-    cats.destroy_all
     granny.destroy
 
     redirect_to "/grannies"
